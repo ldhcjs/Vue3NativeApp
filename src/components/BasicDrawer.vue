@@ -56,7 +56,6 @@
 
 <script lang="ts">
 import { ref, $navigateBack, $navigateTo, onMounted } from "nativescript-vue";
-import DrawerPlugin from "@nativescript-community/ui-drawer/vue3";
 
 export default {
     setup() {
