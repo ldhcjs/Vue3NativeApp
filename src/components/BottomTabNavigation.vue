@@ -6,8 +6,79 @@
         </ActionBar>
         <GridLayout rows="*, *, auto">
             <StackLayout row="0">
-                <label text="content"></label>
+                <label text="content" />
             </StackLayout>
+
+            <MDBottomNavigation
+                row="1"
+                selectedIndex="1"
+                :iosCustomPositioning="false"
+                backgroundColor="blue"
+            >
+                <!-- The bottom tab UI is created via MDTabStrip (the containier) and MDTabStripItem (for each tab)-->
+                <MDTabStrip>
+                    <MDTabStripItem>
+                        <Label text="First" />
+                    </MDTabStripItem>
+                    <MDTabStripItem>
+                        <Label text="Second" />
+                    </MDTabStripItem>
+                    <MDTabStripItem>
+                        <Label text="Third" />
+                    </MDTabStripItem>
+                    <MDTabStripItem>
+                        <Label text="Fourth" />
+                    </MDTabStripItem>
+                </MDTabStrip>
+
+                <!-- The number of MDTabContentItem components should corespond to the number of MDTabStripItem components -->
+                <MDTabContentItem>
+                    <Frame id="test" backgroundColor="transparent">
+                        <Page backgroundColor="transparent">
+                            <GridLayout backgroundColor="transparent">
+                                <Label
+                                    text="First Page"
+                                    class="h2 text-center"
+                                ></Label>
+                                <Button
+                                    text="show alert"
+                                    verticalAlignment="center"
+                                ></Button>
+                            </GridLayout>
+                        </Page>
+                    </Frame>
+                </MDTabContentItem>
+                <MDTabContentItem>
+                    <GridLayout backgroundColor="transparent">
+                        <Label
+                            text="Second Page"
+                            class="h2 text-center"
+                        ></Label>
+                    </GridLayout>
+                </MDTabContentItem>
+                <MDTabContentItem>
+                    <GridLayout backgroundColor="yellow">
+                        <Label text="Third Page" class="h2 text-center"></Label>
+                    </GridLayout>
+                </MDTabContentItem>
+                <MDTabContentItem>
+                    <Frame id="test2">
+                        <Page>
+                            <GridLayout backgroundColor="transparent">
+                                <Label
+                                    text="Fourth Page"
+                                    class="h2 text-center"
+                                ></Label>
+                                <Button
+                                    text="show alert"
+                                    verticalAlignment="center"
+                                ></Button>
+                            </GridLayout>
+                        </Page>
+                    </Frame>
+                </MDTabContentItem>
+            </MDBottomNavigation>
+
             <MDBottomNavigationBar
                 activeColor="blue"
                 inactiveColor="black"
@@ -39,7 +110,7 @@ import {
     TabReselectedEventData,
     TabSelectedEventData,
 } from "@nativescript-community/ui-material-bottomnavigationbar";
-import { EventData } from "@nativescript/core";
+import { EventData, TabView, TabViewItem } from "@nativescript/core";
 import Home from "@/components/Home.vue";
 import Details from "@/components/Details.vue";
 
