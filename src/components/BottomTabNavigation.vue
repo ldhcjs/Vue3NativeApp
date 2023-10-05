@@ -15,7 +15,7 @@
                 :iosCustomPositioning="false"
                 backgroundColor="blue"
             >
-                <!-- The bottom tab UI is created via MDTabStrip (the containier) and MDTabStripItem (for each tab)-->
+                <!-- MDTabStrip 으로 하단 네비게이션 바를 생성한다. -->
                 <MDTabStrip>
                     <MDTabStripItem>
                         <Label text="First" />
@@ -31,7 +31,7 @@
                     </MDTabStripItem>
                 </MDTabStrip>
 
-                <!-- The number of MDTabContentItem components should corespond to the number of MDTabStripItem components -->
+                <!-- MDTabContentItem 으로 하다 네비게이션 버튼에 따른 컨텐츠 화면을 생성한다. -->
                 <MDTabContentItem>
                     <Frame id="test" backgroundColor="transparent">
                         <Page backgroundColor="transparent">
