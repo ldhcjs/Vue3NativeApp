@@ -1,8 +1,23 @@
 <template>
     <Page>
         <ActionBar>
-            <NavigationButton text="Back" @tap="$navigateBack" />
-            <Label text="BottomNavigationBar" />
+            <GridLayout columns="40, *">
+                <Label col="1" text="BottomNavigationBar" fontSize="20" />
+                <Label
+                    col="0"
+                    class="fas"
+                    text="&#xf060;"
+                    @tap="onNavigationButtonTap"
+                    fontSize="20"
+                />
+            </GridLayout>
+
+            <!-- <ActionItem
+                position="left"
+                icon="~/icons/home.png"
+                class="fa"
+                @tap="onNavigationButtonTap"
+            /> -->
         </ActionBar>
         <GridLayout rows="*, auto">
             <MDBottomNavigation
@@ -105,6 +120,7 @@ import {
 import { ref, $navigateBack, $navigateTo, onMounted } from "nativescript-vue";
 import Home from "@/components/Home.vue";
 import Details from "@/components/Details.vue";
+import { GridLayout } from "@nativescript/core";
 
 export const title = "BottomNavigationBar sample";
 
@@ -112,7 +128,6 @@ export default {
     setup() {
         var indexChange = 1;
         const currentTab = ref(0);
-
         const onNavigationButtonTap = () => {
             frameModule.Frame.topmost().goBack();
         };
@@ -133,7 +148,6 @@ export default {
         ) => {
             console.log(`pressed tab index:  ${args.index}`);
         };
-
         return {
             onNavigationButtonTap,
             // onbottomNavigationBarLoaded,
@@ -146,5 +160,6 @@ export default {
             Details,
         };
     },
+    components: { GridLayout },
 };
 </script>
