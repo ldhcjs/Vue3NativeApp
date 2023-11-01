@@ -9,9 +9,11 @@
     "@nativescript-community/ui-material-bottomnavigationbar": "^7.1.4",
     "@nativescript-community/ui-material-tabs": "^7.1.4",
     "@nativescript/core": "~8.5.0",
-    "nativescript-vue": "3.0.0-beta.9"
+    "nativescript-bottom-navigation": "^2.0.5",
+    "nativescript-vue": "3.0.0-beta.10"
   },
   "devDependencies": {
+    "@nativescript/android": "8.5.4",
     "@nativescript/tailwind": "^2.0.1",
     "@nativescript/types": "~8.5.0",
     "@nativescript/webpack": "~5.0.0",

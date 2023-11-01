@@ -4,19 +4,14 @@
             <NavigationButton text="Back" @tap="$navigateBack" />
             <Label text="BottomNavigationBar" />
         </ActionBar>
-        <GridLayout rows="*, *, auto">
-            <StackLayout row="0">
-                <label text="content" />
-            </StackLayout>
-
+        <GridLayout rows="*, auto">
             <MDBottomNavigation
-                row="1"
-                selectedIndex="1"
-                :iosCustomPositioning="false"
+                row="0"
+                :selectedIndex="currentTab"
                 backgroundColor="blue"
             >
                 <!-- MDTabStrip 으로 하단 네비게이션 바를 생성한다. -->
-                <MDTabStrip>
+                <!-- <MDTabStrip>
                     <MDTabStripItem>
                         <Label text="First" />
                     </MDTabStripItem>
@@ -29,24 +24,22 @@
                     <MDTabStripItem>
                         <Label text="Fourth" />
                     </MDTabStripItem>
-                </MDTabStrip>
+                </MDTabStrip> -->
 
                 <!-- MDTabContentItem 으로 하다 네비게이션 버튼에 따른 컨텐츠 화면을 생성한다. -->
                 <MDTabContentItem>
-                    <Frame id="test" backgroundColor="transparent">
-                        <Page backgroundColor="transparent">
-                            <GridLayout backgroundColor="transparent">
-                                <Label
-                                    text="First Page"
-                                    class="h2 text-center"
-                                ></Label>
-                                <Button
-                                    text="show alert"
-                                    verticalAlignment="center"
-                                ></Button>
-                            </GridLayout>
-                        </Page>
-                    </Frame>
+                    <Page backgroundColor="transparent">
+                        <GridLayout backgroundColor="transparent">
+                            <Label
+                                text="First Page"
+                                class="h2 text-center"
+                            ></Label>
+                            <Button
+                                text="show alert"
+                                verticalAlignment="center"
+                            ></Button>
+                        </GridLayout>
+                    </Page>
                 </MDTabContentItem>
                 <MDTabContentItem>
                     <GridLayout backgroundColor="transparent">
@@ -86,7 +79,7 @@
                 @tabPressed="onBottomNavigationTabPressed"
                 @tabSelected="onBottomNavigationTabSelected"
                 @tabReselected="onBottomNavigationTabReselected"
-                row="2"
+                row="1"
             >
                 <MDBottomNavigationTab title="Home" icon="~/icons/home.png" />
                 <MDBottomNavigationTab
@@ -105,12 +98,11 @@
 <script lang="ts">
 import * as frameModule from "@nativescript/core/ui/frame";
 import {
-    BottomNavigationBar,
     TabPressedEventData,
     TabReselectedEventData,
     TabSelectedEventData,
 } from "@nativescript-community/ui-material-bottomnavigationbar";
-import { EventData, TabView, TabViewItem } from "@nativescript/core";
+import { ref, $navigateBack, $navigateTo, onMounted } from "nativescript-vue";
 import Home from "@/components/Home.vue";
 import Details from "@/components/Details.vue";
 
@@ -118,6 +110,9 @@ export const title = "BottomNavigationBar sample";
 
 export default {
     setup() {
+        var indexChange = 1;
+        const currentTab = ref(0);
+
         const onNavigationButtonTap = () => {
             frameModule.Frame.topmost().goBack();
         };
@@ -131,20 +126,21 @@ export default {
         const onBottomNavigationTabSelected = (args: TabSelectedEventData) => {
             console.log(`old tab index:  ${args.oldIndex}`);
             console.log(`selected tab index:  ${args.newIndex}`);
-            indexChange = 1;
+            currentTab.value = args.newIndex;
         };
         const onBottomNavigationTabReselected = (
             args: TabReselectedEventData
         ) => {
             console.log(`pressed tab index:  ${args.index}`);
         };
-        var indexChange = 0;
+
         return {
             onNavigationButtonTap,
             // onbottomNavigationBarLoaded,
             onBottomNavigationTabPressed,
             onBottomNavigationTabSelected,
             onBottomNavigationTabReselected,
+            currentTab,
             indexChange,
             Home,
             Details,
