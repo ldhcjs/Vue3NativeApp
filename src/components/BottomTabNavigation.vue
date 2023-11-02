@@ -7,7 +7,7 @@
                     col="0"
                     class="fas"
                     text="&#xf060;"
-                    @tap="onNavigationButtonTap"
+                    @tap="$navigateBack"
                     fontSize="20"
                 />
             </GridLayout>
@@ -128,9 +128,9 @@ export default {
     setup() {
         var indexChange = 1;
         const currentTab = ref(0);
-        const onNavigationButtonTap = () => {
-            frameModule.Frame.topmost().goBack();
-        };
+        // const onNavigationButtonTap = () => {
+        //     frameModule.Frame.topmost().goBack();
+        // };
         // const onbottomNavigationBarLoaded = (args: EventData) => {
         //     const bottomNavigationBar = args.object as BottomNavigationBar;
         // bottomNavigationBar.showBadge(1);
@@ -149,7 +149,7 @@ export default {
             console.log(`pressed tab index:  ${args.index}`);
         };
         return {
-            onNavigationButtonTap,
+            // onNavigationButtonTap,
             // onbottomNavigationBarLoaded,
             onBottomNavigationTabPressed,
             onBottomNavigationTabSelected,

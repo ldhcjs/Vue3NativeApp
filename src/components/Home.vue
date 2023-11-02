@@ -5,7 +5,7 @@
                 <Label text="Home" class="font-bold text-lg" />
             </ActionBar>
 
-            <GridLayout rows="*, auto, auto, auto, auto, *" class="px-4">
+            <GridLayout rows="*, auto, auto, auto, auto, auto, *" class="px-4">
                 <Label
                     row="1"
                     class="text-xl align-middle text-center text-gray-500"
@@ -39,6 +39,15 @@
                 >
                     Tab View
                 </Button>
+
+                <Button
+                    row="5"
+                    @tap="$navigateTo(NetworkTest)"
+                    class="mt-4 px-4 py-2 bg-white border-2 border-blue-400 rounded-lg"
+                    horizontalAlignment="center"
+                >
+                    NetworkTest
+                </Button>
             </GridLayout>
         </Page>
     </Frame>
@@ -55,6 +64,7 @@ import {
 import Details from "./Details.vue";
 import BasicDrawer from "./BasicDrawer.vue";
 import BottomTabNavigation from "@/components/BottomTabNavigation.vue";
+import NetworkTest from "@/components/NetworkTest.vue";
 
 const counter = ref(0);
 const message = computed(() => {
