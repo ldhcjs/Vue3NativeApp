@@ -1,36 +1,3 @@
-<script lang="ts" setup>
-import {
-    ref,
-    computed,
-    onMounted,
-    onUnmounted,
-    $navigateTo,
-} from "nativescript-vue";
-import Details from "./Details.vue";
-import BasicDrawer from "./BasicDrawer.vue";
-import BottomTabNavigation from "@/components/BottomTabNavigation.vue";
-
-const counter = ref(0);
-const message = computed(() => {
-    return `Blank {N}-Vue app: ${counter.value}`;
-});
-
-function logMessage() {
-    console.log("You have tapped the message!");
-}
-
-let interval: any;
-onMounted(() => {
-    console.log("mounted");
-    interval = setInterval(() => counter.value++, 100);
-});
-
-onUnmounted(() => {
-    console.log("unmounted");
-    clearInterval(interval);
-});
-</script>
-
 <template>
     <Frame>
         <Page>
@@ -76,6 +43,39 @@ onUnmounted(() => {
         </Page>
     </Frame>
 </template>
+
+<script lang="ts" setup>
+import {
+    ref,
+    computed,
+    onMounted,
+    onUnmounted,
+    $navigateTo,
+} from "nativescript-vue";
+import Details from "./Details.vue";
+import BasicDrawer from "./BasicDrawer.vue";
+import BottomTabNavigation from "@/components/BottomTabNavigation.vue";
+
+const counter = ref(0);
+const message = computed(() => {
+    return `Blank {N}-Vue app: ${counter.value}`;
+});
+
+function logMessage() {
+    console.log("You have tapped the message!");
+}
+
+let interval: any;
+onMounted(() => {
+    console.log("mounted");
+    interval = setInterval(() => counter.value++, 100);
+});
+
+onUnmounted(() => {
+    console.log("unmounted");
+    clearInterval(interval);
+});
+</script>
 
 <style>
 /* .info {
