@@ -28,19 +28,27 @@
                 textWrap="true"
                 whiteSpace="normal"
             />
+            <ActivityIndicator
+                :busy="indicator"
+                rowSpan="2"
+                verticalAlignment="center"
+            />
         </GridLayout>
     </Page>
 </template>
 
 <script lang="ts">
 import { ref, $navigateBack, $navigateTo, onMounted } from "nativescript-vue";
-import { Http } from "@nativescript/core";
+import { ActivityIndicator, EventData, Http } from "@nativescript/core";
+import { on } from "events";
 
 export default {
     setup() {
         const resultHttpGetString = ref("http");
+        const indicator = ref(false);
 
         const getHttpString = () => {
+            indicator.value = true;
             Http.getString("https://httpbin.org/get").then(
                 (result: string) => {
                     console.log(`Http getString : ${result}`);
@@ -48,15 +56,19 @@ export default {
                     console.log(
                         `Http getString resultHttpGetString : ${resultHttpGetString.value}`
                     );
+                    indicator.value = false;
                 },
-                (e) => {}
+                (e) => {
+                    indicator.value = false;
+                }
             );
         };
-
         return {
             getHttpString,
             resultHttpGetString,
+            indicator,
         };
     },
+    components: { ActivityIndicator },
 };
 </script>
