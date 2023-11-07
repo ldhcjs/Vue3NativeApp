@@ -14,12 +14,12 @@
         </ActionBar>
 
         <GridLayout rows="*, auto">
-            <ListView for="item in itemList" :items="msgs" row="0">
-                <template v-slot:item="item">
+            <ListView :items="chatData" row="0">
+                <template #default="{ item, index }: ListItem<ChatData>">
                     <GridLayout rows="auto, auto, auto" columns="*, auto">
-                        <Label text="item.text" row="0" />
-                        <Label text="item.sender" row="1" />
-                        <Label text="item.time" row="2" />
+                        <Label :text="item.text" row="0" />
+                        <Label :text="item.sender" row="1" />
+                        <Label :text="item.time" row="2" />
                     </GridLayout>
                 </template>
             </ListView>
@@ -40,30 +40,40 @@
 
 <script lang="ts">
 import { ref, $navigateBack, ListView } from "nativescript-vue";
+import type { ListItem } from 'nativescript-vue';
 
 export default {
     setup() {
+        interface ChatData {
+            text: string;
+            sender: string;
+            time: string;
+        }
+
+        const chatData = ref<ChatData[]>(
+            [
+                {
+                    text: "Hello Hyun",
+                    sender: "Tony",
+                    time: "14:30",
+                }
+            ]
+        );
         const newMsg = ref("");
-        const msgs = ref([
-            {
-                text: "Hello Hyun",
-                sender: "Tony",
-                time: "14:30",
-            },
-        ]);
+
         const sendMsg = () => {
             if (newMsg.value.trim() === "") return;
 
             const sender = "User";
             const currentTime = new Date().toLocaleTimeString();
 
-            msgs.value.push({
+            chatData.value.push({
                 text: newMsg.value,
                 sender: sender,
                 time: currentTime,
-            });
+            })
 
-            console.log(msgs.value);
+            console.log(chatData.value);
 
             newMsg.value = "";
         };
@@ -71,7 +81,7 @@ export default {
         return {
             sendMsg,
             newMsg,
-            msgs,
+            chatData,
         };
     },
 };
