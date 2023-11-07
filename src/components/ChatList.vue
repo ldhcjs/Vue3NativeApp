@@ -42,14 +42,14 @@
 import { ref, $navigateBack, ListView } from "nativescript-vue";
 import type { ListItem } from 'nativescript-vue';
 
-export default {
-    setup() {
-        interface ChatData {
+interface ChatData {
             text: string;
             sender: string;
             time: string;
         }
 
+export default {
+    setup() {
         const chatData = ref<ChatData[]>(
             [
                 {
