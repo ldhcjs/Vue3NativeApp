@@ -17,10 +17,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "skipLibCheck": true,
-    "types": [
-      "nativescript-sqlite"
-    ]
+    "skipLibCheck": true
   },
   "vueCompilerOptions": {
     "target": 3,
