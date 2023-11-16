@@ -39,6 +39,9 @@ import { openOrCreate } from "@nativescript-community/sqlite";
 import { knownFolders, path } from "@nativescript/core/file-system";
 import { alert } from "@nativescript/core";
 
+// TODO: 아직 데이터 베이스가 제대로 안되고 있음 다시 봐야 할듯
+// 일단 푸시부터 하자.
+
 interface DBData {
     id: number;
     name: string;
